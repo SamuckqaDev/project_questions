@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project_questions/answer.dart';
 
 import 'question.dart';
 
@@ -34,12 +35,9 @@ class _QuestionAppState extends State<QuestionApp> {
         body: Column(
           children: [
             Question(text: questions.elementAt(_questionSelected)),
-            ElevatedButton(
-                onPressed: () => _toRespond(), child: Text('Answer 1')),
-            ElevatedButton(
-                onPressed: () => _toRespond(), child: Text('Answer 2')),
-            ElevatedButton(
-                onPressed: () => _toRespond(), child: Text('Answer 3'))
+            const Answer(text: 'Answer 1'),
+            const Answer(text: 'Answer 2'),
+            const Answer(text: 'Answer 3')
           ],
         ),
       ),
