@@ -2,13 +2,15 @@
 
 import 'package:flutter/material.dart';
 
+import 'question.dart';
+
 void main(List<String> args) => runApp(QuestionApp());
 
-class QuestionAppState extends State<QuestionApp> {
-  var questionSelected = 0;
+class _QuestionAppState extends State<QuestionApp> {
+  var _questionSelected = 0;
 
-  void toRespond() {
-    setState(() => questionSelected++);
+  void _toRespond() {
+    setState(() => _questionSelected++);
     print('Answer responded!');
   }
 
@@ -31,13 +33,13 @@ class QuestionAppState extends State<QuestionApp> {
         ),
         body: Column(
           children: [
-            Text(questions.elementAt(questionSelected)),
+            Question(text: questions.elementAt(_questionSelected)),
             ElevatedButton(
-                onPressed: () => toRespond(), child: Text('Answer 1')),
+                onPressed: () => _toRespond(), child: Text('Answer 1')),
             ElevatedButton(
-                onPressed: () => toRespond(), child: Text('Answer 2')),
+                onPressed: () => _toRespond(), child: Text('Answer 2')),
             ElevatedButton(
-                onPressed: () => toRespond(), child: Text('Answer 3'))
+                onPressed: () => _toRespond(), child: Text('Answer 3'))
           ],
         ),
       ),
@@ -48,7 +50,7 @@ class QuestionAppState extends State<QuestionApp> {
 class QuestionApp extends StatefulWidget {
   //widget = view component;
   @override
-  QuestionAppState createState() {
-    return QuestionAppState();
+  _QuestionAppState createState() {
+    return _QuestionAppState();
   }
 }
