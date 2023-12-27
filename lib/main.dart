@@ -28,6 +28,16 @@ class _QuestionAppState extends State<QuestionApp> {
       },
     ];
 
+    List<Widget> answer = [];
+
+    for (String textAnser
+        in questions[_questionSelected]['answer'] as List<String>) {
+      answer.add(Answer(
+        text: textAnser,
+        onClick: _toRespond,
+      ));
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -36,9 +46,7 @@ class _QuestionAppState extends State<QuestionApp> {
         body: Column(
           children: <Widget>[
             Question(text: questions[_questionSelected]['text'] as String),
-            Answer(text: 'Answer 1', onClick: _toRespond),
-            Answer(text: 'Answer 2', onClick: _toRespond),
-            Answer(text: 'Answer 3', onClick: _toRespond)
+            ...answer,
           ],
         ),
       ),
@@ -49,7 +57,5 @@ class _QuestionAppState extends State<QuestionApp> {
 class QuestionApp extends StatefulWidget {
   //widget = view component;
   @override
-  _QuestionAppState createState() {
-    return _QuestionAppState();
-  }
+  _QuestionAppState createState() => _QuestionAppState();
 }
