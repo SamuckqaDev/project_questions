@@ -1,5 +1,4 @@
 // ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:project_questions/answer.dart';
 
@@ -17,27 +16,29 @@ class _QuestionAppState extends State<QuestionApp> {
 
   @override
   Widget build(BuildContext context) {
-    //flutter most return values ro objects;
-    final List<String> questions = [
-      'What your favorite color?',
-      'What is your favorite food?',
-      'What is your favorite movie?',
-      'What is your favorite book?',
-      'What is your favorite sport?',
-      'What is your favorite Animal',
+    //flutter most return values to objects;
+    final questions = [
+      {
+        'text': 'What your favorite animal? ',
+        'answer': ['Dog', 'cat', 'monkey', 'Rabbit']
+      },
+      {
+        'text': 'What your favorite color? ',
+        'answer': ['red', 'purple', 'pink', 'black']
+      },
     ];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Questions'),
+          title: const Text('Home - Question'),
         ),
         body: Column(
-          children: [
-            Question(text: questions.elementAt(_questionSelected)),
-            const Answer(text: 'Answer 1'),
-            const Answer(text: 'Answer 2'),
-            const Answer(text: 'Answer 3')
+          children: <Widget>[
+            Question(text: questions[_questionSelected]['text'] as String),
+            Answer(text: 'Answer 1', onClick: _toRespond),
+            Answer(text: 'Answer 2', onClick: _toRespond),
+            Answer(text: 'Answer 3', onClick: _toRespond)
           ],
         ),
       ),
